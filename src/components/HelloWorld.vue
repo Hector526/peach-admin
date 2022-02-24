@@ -18,7 +18,7 @@
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
   </p>
 
-  <button type="button" @click="count++">count is: {{ count }}</button>
+  <el-button type="button" @click="count++">count is: {{ count }}</el-button>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
@@ -31,7 +31,7 @@ defineProps<{ msg: string }>();
 
 const count = ref(0);
 </script>
-<style scoped>
+<style scoped lang="scss">
 a {
   color: #42b983;
 }

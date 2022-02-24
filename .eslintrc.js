@@ -20,13 +20,15 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        moduleDirectory: ['node_modules', 'src/'],
       },
     },
   },
   rules: {
     'prettier/prettier': 'error',
     'linebreak-style': 0,
-
+    'import/no-unresolved': 'off',
+    'import/no-absolute-path': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {
