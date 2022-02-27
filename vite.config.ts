@@ -5,6 +5,8 @@ import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
+import VueSetupExtend from 'vite-plugin-vue-setup-extend';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import path from 'path';
@@ -30,6 +32,7 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
     }),
+    VueSetupExtend(),
   ],
   server: {
     host: '0.0.0.0',
