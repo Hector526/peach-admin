@@ -15,10 +15,19 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@/*":["src/*"]
+      "@/*": ["src/*"],
+      "@config/*": ["config/*"],
+      "@utils/*": ["src/utils/*"],
+      "@api/*": ["src/api/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    ".d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "**/*.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

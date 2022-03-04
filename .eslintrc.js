@@ -53,6 +53,8 @@ module.exports = {
           '**/protractor.conf.*.js', // protractor config
           '**vite**',
           '**@vitejs**',
+          'config/**',
+          'mock/**',
         ],
         optionalDependencies: false,
       },

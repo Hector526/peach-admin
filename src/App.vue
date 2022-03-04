@@ -1,5 +1,5 @@
 <template>
-  <transition name="el-fade-in-linear"><router-view></router-view></transition>
+  <router-view></router-view>
 </template>
 
 <script lang="ts" name="App"></script>
