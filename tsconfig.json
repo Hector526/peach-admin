@@ -5,7 +5,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "strict": true,
+    "strict": false,
     "skipLibCheck": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -18,7 +18,9 @@
       "@/*": ["src/*"],
       "@config/*": ["config/*"],
       "@utils/*": ["src/utils/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@router/*": ["src/router/*"],
+      "@models/*": ["src/models/*"]
     }
   },
   "include": [

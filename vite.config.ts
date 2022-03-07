@@ -11,7 +11,6 @@ import {
 
 export default defineConfig((env: ConfigEnv) => {
   const viteEnv = loadEnv(env.mode, `.env.${env.mode}`);
-  // console.log(env);
   return {
     base: viteEnv.VITE_BASE,
     resolve: {
@@ -20,6 +19,8 @@ export default defineConfig((env: ConfigEnv) => {
         '@config': resolve(__dirname, './config'),
         '@utils': resolve(__dirname, './src/utils'),
         '@api': resolve(__dirname, './src/api'),
+        '@router': resolve(__dirname, './src/router'),
+        '@models': resolve(__dirname, './src/models'),
       },
     },
     css: {

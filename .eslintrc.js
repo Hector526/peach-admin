@@ -10,6 +10,7 @@ module.exports = {
     'airbnb-base',
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    './.eslintrc-auto-import.json',
   ],
   parserOptions: {
     ecmaVersion: 12,
@@ -29,6 +30,8 @@ module.exports = {
     'linebreak-style': 0,
     'import/no-unresolved': 'off',
     'import/no-absolute-path': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    'no-console': 'off',
     'import/no-extraneous-dependencies': [
       'error',
       {
