@@ -4,7 +4,7 @@
  */
 
 // 应用名
-export const APP_TITLE = 'PanGuAxe';
+export const APP_TITLE = 'peach-admin';
 
 // 本地服务端口
 export const VITE_PORT = 10555;
