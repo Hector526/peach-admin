@@ -12,7 +12,7 @@
 
 包管理：yarn
 
-## ## 教程
+## 教程
 
 [从零开始一步一步搭建前端项目](https://juejin.cn/column/7068213300734984228)
 
@@ -80,10 +80,6 @@ export default {
 
 ### axios封装
 
-
-
 ### mock数据
-
-
 
 ### 支持Pinia
