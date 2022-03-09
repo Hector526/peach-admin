@@ -36,6 +36,66 @@
   border-radius: 0px 16px 16px 0px;
 }
 
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.login-form {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.login-form-main {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  box-sizing: border-box;
+
+  .login-form-top {
+    width: 100%;
+    margin-top: 60px;
+    font-size: 1.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-form-content {
+    width: 100%;
+
+    .login-submit {
+      width: 100%;
+    }
+  }
+  .login-form-last {
+    align-self: flex-end;
+  }
+}
+
+.reset-form {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
 // .login-top {
 //   display: flex;
 //   align-items: center;
@@ -252,10 +312,6 @@
 //   align-items: center;
 //   justify-content: center;
 //   overflow: hidden;
-// }
-
-// .forgot-button {
-//   color: #01bfbf;
 // }
 
 // :deep(.el-input__inner:focus) {

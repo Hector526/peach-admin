@@ -1,8 +1,13 @@
+/* eslint-disable dot-notation */
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import qs from 'qs';
 import isPlainObject from 'lodash/isPlainObject';
 import router from '@router/index';
 import { IResponse, RequestOptions } from '@models/axios/axios';
+
+import useTokenStore from '@store/modules/user';
+
+const userStore = useTokenStore();
 
 // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 1000 * 180;
@@ -17,7 +22,7 @@ axios.defaults.validateStatus = function (status: number) {
 };
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: `${import.meta.env.BASE_URL}`,
+  baseURL: `${import.meta.env.VITE_API_BASEURL}`,
 });
 
 // axios实例拦截响应
@@ -49,6 +54,18 @@ axiosInstance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
     // eslint-disable-next-line no-param-reassign
     config.headers['Accept-Language'] = 'zh-CN';
+    const token =
+      userStore.getAccessToken || window.sessionStorage.getItem('access_token');
+    if (token !== null) {
+      // eslint-disable-next-line no-param-reassign
+      config.headers['Authorization'] = `bearer ${token}`;
+    } else {
+      // eslint-disable-next-line no-param-reassign
+      config.headers['Authorization'] = `Basic ${
+        import.meta.env.VITE_SECURITY_BASIC
+      }`;
+    }
+
     if (config.method === 'get') {
       // eslint-disable-next-line no-param-reassign
       config.params = {

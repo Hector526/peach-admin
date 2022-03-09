@@ -21,6 +21,7 @@ export default defineConfig((env: ConfigEnv) => {
         '@api': resolve(__dirname, './src/api'),
         '@router': resolve(__dirname, './src/router'),
         '@models': resolve(__dirname, './src/models'),
+        '@store': resolve(__dirname, './src/store'),
       },
     },
     css: {

@@ -1,46 +1,38 @@
 <template>
-  <div>登录页面</div>
-  <el-button @click="goNotFoundpage">跳转404页面</el-button>
-  <el-button @click="sendLogin">sendLogin</el-button>
-  <el-button @click="sendMTopMenu">获取顶级菜单</el-button>
+  <div class="login-page">
+    <div class="login-container">
+      <div class="login-left"></div>
+      <div class="login-right">
+        <transition name="fade">
+          <div v-if="isLoginVisible" class="login-form">
+            <LoginForm @change-login-or-reset="goBackLogin" />
+          </div>
+          <div v-else class="reset-form">
+            <ResetForm @change-login-or-reset="goResetPassword" />
+          </div>
+        </transition>
+      </div>
+    </div>
+  </div>
 </template>
-<script setup lang="ts" name="Login">
-import to from 'await-to-js';
-import { login as userLogin, getTopMenu } from '@api/userLogin';
-import { IResponse } from '@models/axios/axios';
-import { LoginData } from '@models/user/user';
 
-const $router = useRouter();
+<script lang="ts" setup name="Login">
+import LoginForm from './LoginForm.vue';
+import ResetForm from './ResetForm.vue';
 
-const goNotFoundpage = () => {
-  $router.push({
-    name: 'notFound',
-  });
+// 初始化sessionStorage
+window.sessionStorage.clear();
+
+const isLoginVisible = ref<boolean>(true);
+const goBackLogin = (value) => {
+  window.sessionStorage.clear();
+  isLoginVisible.value = value;
 };
-const sendLogin = async () => {
-  const params = {
-    username: '3242',
-    password: '23432',
-  } as LoginData;
-  const [err, result] = await to<IResponse>(userLogin(params));
-  if (err) {
-    // TODO: 错误处理
-    console.log(err);
-  }
-  const { code, data, msg } = result;
-
-  console.log(code, data, msg);
-};
-const sendMTopMenu = async () => {
-  const [err, result] = await to<IResponse>(getTopMenu());
-  if (err) {
-    // TODO: 错误处理
-    console.log(err);
-  }
-  const { data } = result;
-
-  console.log(data);
+const goResetPassword = (value) => {
+  isLoginVisible.value = value;
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss" scoped>
+@import '@/styles/login/login.scss';
+</style>

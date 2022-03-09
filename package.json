@@ -13,8 +13,10 @@
   "dependencies": {
     "await-to-js": "^3.0.0",
     "axios": "^0.26.0",
+    "crypto-js": "^4.1.1",
     "element-plus": "^2.0.2",
     "lodash": "^4.17.21",
+    "pinia": "^2.0.11",
     "qs": "^6.10.3",
     "vue": "^3.2.25",
     "vue-router": "^4.0.13"
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
+    "@types/crypto-js": "^4.1.1",
     "@types/lodash": "^4.14.179",
     "@types/node": "^17.0.21",
     "@types/qs": "^6.9.7",
@@ -71,11 +74,18 @@
       "include": [
         "await-to-js",
         "axios",
+        "crypto-js",
         "element-plus",
         "element-plus/es",
         "element-plus/es/components/button/style/index",
+        "element-plus/es/components/col/style/index",
+        "element-plus/es/components/form-item/style/index",
+        "element-plus/es/components/form/style/index",
+        "element-plus/es/components/input/style/index",
+        "element-plus/es/components/row/style/index",
         "element-plus/es/locale/lang/zh-cn",
         "lodash/isPlainObject",
+        "pinia",
         "qs",
         "vue",
         "vue-router"

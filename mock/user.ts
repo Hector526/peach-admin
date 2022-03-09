@@ -9,9 +9,26 @@ export default [
       return {
         code: 0,
         data: {
-          token: 'eca4bb1529bb5b4dcd3c9aa68e9e185d',
-          expire: 1200,
-          onLine: true,
+          access_token: 'de33b0b5-792f-4c65-b487-18c260831f56',
+          code: 0,
+          expires_in: 49933,
+          refresh_token: 'addc8732-8581-4aac-b252-d30077ece6bb',
+          scope: 'all',
+          token_type: 'bearer',
+        },
+        msg: 'success',
+      };
+    },
+  },
+  {
+    url: '/captcha',
+    timeout: 200,
+    method: 'GET',
+    response: () => {
+      return {
+        code: 0,
+        data: {
+          display: true,
         },
         msg: 'success',
       };
