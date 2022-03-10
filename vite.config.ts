@@ -17,11 +17,11 @@ export default defineConfig((env: ConfigEnv) => {
       alias: {
         '@': resolve(__dirname, 'src'),
         '@config': resolve(__dirname, './config'),
-        '@utils': resolve(__dirname, './src/utils'),
-        '@api': resolve(__dirname, './src/api'),
-        '@router': resolve(__dirname, './src/router'),
-        '@models': resolve(__dirname, './src/models'),
-        '@store': resolve(__dirname, './src/store'),
+        '@utils': resolve(__dirname, 'src/utils'),
+        '@api': resolve(__dirname, 'src/api'),
+        '@router': resolve(__dirname, 'src/router'),
+        '@models': resolve(__dirname, 'src/models'),
+        '@store': resolve(__dirname, 'src/store'),
       },
     },
     css: {
@@ -35,7 +35,8 @@ export default defineConfig((env: ConfigEnv) => {
     plugins: vitePlugins(env),
     // server
     server: {
-      hmr: { overlay: false }, // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
+      // 禁用或配置 HMR 连接 设置 server.hmr.overlay 为 false 可以禁用服务器错误遮罩层
+      hmr: { overlay: false },
       // 服务配置
       port: VITE_PORT, // 类型： number 指定服务器端口;
       open: false, // 类型： boolean | string在服务器启动时自动在浏览器中打开应用程序；
@@ -61,12 +62,22 @@ export default defineConfig((env: ConfigEnv) => {
         // 确保外部化处理那些你不想打包进库的依赖
         external: [],
         // https://rollupjs.org/guide/en/#big-list-of-options
+        output: {
+          // eslint-disable-next-line consistent-return
+          manualChunks(id) {
+            // 将pinia的全局库实例打包进vendor，避免和页面一起打包造成资源重复引入
+            if (id.includes(resolve(__dirname, './src/store/index.ts'))) {
+              return 'vendor';
+            }
+          },
+        },
       },
       watch: {
         // https://rollupjs.org/guide/en/#watch-options
       },
       // Turning off brotliSize display can slightly reduce packaging time
       brotliSize: false,
+      sourcemap: true,
       chunkSizeWarningLimit: 2000,
     },
   };

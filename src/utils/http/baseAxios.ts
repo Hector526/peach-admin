@@ -7,7 +7,9 @@ import { IResponse, RequestOptions } from '@models/axios/axios';
 
 import useTokenStore from '@store/modules/user';
 
-const userStore = useTokenStore();
+import piniaStore from '@store/index';
+
+const { getAccessToken } = piniaStore.useTokenStore;
 
 // 如果请求话费了超过 `timeout` 的时间，请求将被中断
 axios.defaults.timeout = 1000 * 180;
@@ -55,7 +57,7 @@ axiosInstance.interceptors.request.use(
     // eslint-disable-next-line no-param-reassign
     config.headers['Accept-Language'] = 'zh-CN';
     const token =
-      userStore.getAccessToken || window.sessionStorage.getItem('access_token');
+      getAccessToken() || window.sessionStorage.getItem('access_token');
     if (token !== null) {
       // eslint-disable-next-line no-param-reassign
       config.headers['Authorization'] = `bearer ${token}`;

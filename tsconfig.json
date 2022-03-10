@@ -13,15 +13,15 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["./src/*"],
       "@config/*": ["config/*"],
-      "@utils/*": ["src/utils/*"],
-      "@api/*": ["src/api/*"],
-      "@router/*": ["src/router/*"],
-      "@models/*": ["src/models/*"],
-      "@store/*": ["src/store/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@api/*": ["./src/api/*"],
+      "@router/*": ["./src/router/*"],
+      "@models/*": ["./src/models/*"],
+      "@store/*": ["./src/store/*"]
     }
   },
   "include": [

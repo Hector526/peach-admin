@@ -47,7 +47,7 @@
 import { sha256 } from '@utils/crypto';
 import to from 'await-to-js';
 import { login as userLogin } from '@api/userLogin';
-import useTokenStore from '@store/modules/user';
+import piniaStore from '@store/index';
 
 import { IResponse } from '@models/axios/axios';
 import { LoginData } from '@models/user/user';
@@ -59,7 +59,7 @@ type FormInstance = InstanceType<typeof ElForm>;
 const emit = defineEmits(['change-login-or-reset']);
 
 const router = useRouter();
-const userStore = useTokenStore();
+const { setAccessToken } = piniaStore.useTokenStore;
 
 const isLoddingVisible = ref<boolean>(false);
 
@@ -92,9 +92,7 @@ const handleLogin = (formEl: FormInstance | undefined) => {
       }
       const { code, data, msg } = result;
       console.log(code, data, msg);
-      const isSaveAccessTokenRes = await userStore.setAccessToken(
-        data.access_token
-      );
+      const isSaveAccessTokenRes = await setAccessToken(data.access_token);
       if (!isSaveAccessTokenRes) {
         ElMessage.error('登录凭证存储失败！');
         return;
