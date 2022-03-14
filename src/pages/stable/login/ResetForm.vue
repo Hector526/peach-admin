@@ -7,8 +7,6 @@
 </template>
 
 <script lang="ts" setup name="ResetForm">
-import { defineEmits } from 'vue';
-
 const emit = defineEmits(['change-login-or-reset']);
 
 const goBackLogin = () => {
