@@ -31,7 +31,6 @@ export default defineConfig((env: ConfigEnv) => {
         scss: {
           javascriptEnabled: true,
           additionalData: `@use "@/styles/element/theme.scss" as *;`,
-          // additionalData: `@use "@styles/index.scss";`,
         },
       },
     },
