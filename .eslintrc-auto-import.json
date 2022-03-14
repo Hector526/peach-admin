@@ -10,6 +10,7 @@
     "defineStore": true,
     "effectScope": true,
     "EffectScope": true,
+    "ElMessage": true,
     "getActivePinia": true,
     "getCurrentInstance": true,
     "getCurrentScope": true,

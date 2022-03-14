@@ -52,6 +52,7 @@ import piniaStore from '@store/index';
 import { IResponse } from '@models/axios/axios';
 import { LoginData } from '@models/user/user';
 import { ElMessage } from 'element-plus';
+import 'element-plus/theme-chalk/src/message.scss';
 import type { ElForm } from 'element-plus';
 
 type FormInstance = InstanceType<typeof ElForm>;
