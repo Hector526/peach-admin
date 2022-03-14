@@ -1,12 +1,10 @@
 /* eslint-disable dot-notation */
+/* eslint-disable no-param-reassign */
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import qs from 'qs';
 import isPlainObject from 'lodash/isPlainObject';
 import router from '@router/index';
 import { IResponse, RequestOptions } from '@models/axios/axios';
-
-import useTokenStore from '@store/modules/user';
-
 import piniaStore from '@store/index';
 
 const { getAccessToken } = piniaStore.useTokenStore;
@@ -30,21 +28,19 @@ const axiosInstance: AxiosInstance = axios.create({
 // axios实例拦截响应
 axiosInstance.interceptors.response.use(
   (response: AxiosResponse) => {
-    const status = Number(response.data.code) || Number(response.status);
-    const message = response.data.msg || '未知错误';
-
-    if (status === 401) {
-      setTimeout(() => {
-        router.replace({
-          path: '/login',
-        });
-      }, 1000);
-      return Promise.reject(message);
-    }
     if (response.status === 200) {
+      if (Number(response.data.code) === 401) {
+        const message = response.data.msg || '未知错误';
+        setTimeout(() => {
+          router.replace({
+            path: '/login',
+          });
+        }, 1000);
+        return Promise.reject(message);
+      }
       return response;
     }
-    return response;
+    return Promise.reject(new Error('未知错误'));
   },
   (error) => {
     return Promise.reject(error);
@@ -58,14 +54,22 @@ axiosInstance.interceptors.request.use(
     config.headers['Accept-Language'] = 'zh-CN';
     const token =
       getAccessToken() || window.sessionStorage.getItem('access_token');
-    if (token !== null) {
-      // eslint-disable-next-line no-param-reassign
-      config.headers['Authorization'] = `bearer ${token}`;
-    } else {
-      // eslint-disable-next-line no-param-reassign
-      config.headers['Authorization'] = `Basic ${
-        import.meta.env.VITE_SECURITY_BASIC
-      }`;
+
+    if (import.meta.env.VITE_BACKEND_SECURITY === 'SpringSecurity') {
+      if (token !== null) {
+        config.headers['Authorization'] = `bearer ${token}`;
+      } else {
+        config.headers['Authorization'] = `Basic ${
+          import.meta.env.VITE_SECURITY_BASIC
+        }`;
+      }
+    }
+
+    if (
+      import.meta.env.VITE_BACKEND_SECURITY === 'ApacheShiro' &&
+      token !== null
+    ) {
+      config.headers['token'] = token;
     }
 
     if (config.method === 'get') {
