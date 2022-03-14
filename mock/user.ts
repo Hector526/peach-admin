@@ -2,7 +2,7 @@ import { MockMethod } from 'vite-plugin-mock';
 
 export default [
   {
-    url: '/user/login',
+    url: '/api/user/login',
     timeout: 200,
     method: 'POST',
     response: () => {
@@ -21,7 +21,7 @@ export default [
     },
   },
   {
-    url: '/captcha',
+    url: '/api/captcha',
     timeout: 200,
     method: 'GET',
     response: () => {
@@ -35,7 +35,7 @@ export default [
     },
   },
   {
-    url: '/sys/menu/top/list',
+    url: '/api/sys/menu/top/list',
     timeout: 200,
     method: 'GET',
     response: () => {
@@ -113,7 +113,7 @@ export default [
     },
   },
   {
-    url: '/user/logout',
+    url: '/api/user/logout',
     timeout: 200,
     method: 'post',
     response: () => {
@@ -124,7 +124,7 @@ export default [
     },
   },
   {
-    url: '/textMock',
+    url: '/api/textMock',
     timeout: 200,
     method: 'POST',
     response: () => {

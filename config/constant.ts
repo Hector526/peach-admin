@@ -13,8 +13,12 @@ export const VITE_PORT = 10555;
 export const API_PREFIX = '/api';
 
 // serve
-export const API_BASE_URL = '/api';
-export const API_TARGET_URL = 'http://localhost:10555';
+export const API_BASE_URL = '/beihai';
+export const API_TARGET_URL = 'http://www.jingshuosz.cn:18081/beihai-eom-admin';
+
+// mock
+export const MOCK_API_BASE_URL = '/mock/api';
+export const MOCK_API_TARGET_URL = 'http://localhost:10555';
 
 // 包依赖分析
 export const ANALYSIS = true;

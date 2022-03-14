@@ -7,6 +7,8 @@ import {
   VITE_DROP_CONSOLE,
   API_BASE_URL,
   API_TARGET_URL,
+  MOCK_API_BASE_URL,
+  MOCK_API_TARGET_URL,
 } from './config/constant';
 
 export default defineConfig((env: ConfigEnv) => {
@@ -29,6 +31,7 @@ export default defineConfig((env: ConfigEnv) => {
         scss: {
           javascriptEnabled: true,
           additionalData: `@use "@/styles/element/theme.scss" as *;`,
+          // additionalData: `@use "@styles/index.scss";`,
         },
       },
     },
@@ -47,6 +50,12 @@ export default defineConfig((env: ConfigEnv) => {
           target: API_TARGET_URL,
           changeOrigin: true,
           rewrite: (path) => path.replace(new RegExp(`^${API_BASE_URL}`), ''),
+        },
+        [MOCK_API_BASE_URL]: {
+          target: MOCK_API_TARGET_URL,
+          changeOrigin: true,
+          rewrite: (path) =>
+            path.replace(new RegExp(`^${MOCK_API_BASE_URL}`), '/api'),
         },
       },
     },

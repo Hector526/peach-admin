@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import VueSetupExtend from 'vite-plugin-vue-setup-extend';
+// import VueSetupExtend from 'vite-plugin-vue-setup-extend';
 import ViteRestart from 'vite-plugin-restart';
 import OptimizationPersist from 'vite-plugin-optimize-persist';
 import PkgConfig from 'vite-plugin-package-config';
@@ -38,7 +38,7 @@ export default (env: ConfigEnv) => {
       dirs: ['src/components/'],
       resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
     }),
-    VueSetupExtend(),
+    // VueSetupExtend(),
     ViteRestart({
       restart: ['*.config.[jt]s', '**/config/*.[jt]s'],
     }),
