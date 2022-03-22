@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv, ConfigEnv } from 'vite';
 import { resolve } from 'path';
 import vitePlugins from './config/vitePlugins';
+// import { createVitePlugins } from './config/vitePlugins/index';
 
 import {
   VITE_PORT,
